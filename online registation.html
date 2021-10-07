@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Registration</title>
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="../CSS/form.css" >
+    <link rel="icon" href="../image/forms-icon.png">
+</head>
+<body bgcolor="lightskyblue" onload="funload()" >
+
+    <marquee direction="left" style="font-size: large; color: crimson;">** "For Online Delivery Fill Registration Form" **</marquee>
+
+    <h1 style="background-color: chartreuse; text-align: center;" >Welcome to Our Store</h1>
+
+<form action="../CSS/online Grocery.html" method="POST" class="c1" onsubmit="return validation()">
+        <h1 id="heading">Customer Registration Form</h1>
+        <br><br>
+        <!-- Name -->
+        <label>Name :</label> 
+        <input type="text" name="user" placeholder="Enter Your Full Name" size="30" maxlength="30" id="user" onblur="fblur()" > 
+        <span id="username" style="color: red;font-weight: bold;"></span>
+<br><br>
+
+<!-- DOB -->
+<label>Date Of Birth :</label>
+<input type="date" name="DOB" size="50">
+        <br><br>
+        <!-- SEX -->
+        <label>Sex:</label>
+        <input type="radio" name="r"> male
+        <input type="radio" name="r"> female
+        <br><br>
+        <!-- Mail -->
+        <label>Email :</label>
+        <input type="email" name="name" size="20" placeholder="Enter Your Mail id" id="mail" onfocus="myfunction(this)">
+        <span id="email"></span>
+        <br><br>
+        <!-- Password -->
+        <label>Password :</label>
+        <input type="password" name="password" id="pas" placeholder="Enter Your Password" size="20" oninput="getvalue()">
+        <span id="sp2"></span>
+        <br><br>
+        <!-- RePassword -->
+        <label>Re-Enter Password :</label>
+        <input type="password" name="conpass" placeholder="Re-Enter Your Password" size="20" id="cpwd" onblur="ptblur()">
+        <span id="cpassword"></span>
+        <br><br>
+
+        <!-- Address -->   
+<label>Address :</label>
+<textarea rows="6" cols="25" id="add" placeholder="Enter Your Adrress"> </textarea>
+<br><br>
+<!-- place -->
+<label>Place :</label>
+<select>
+<option>--Select--</option>
+    <option>Anand Nagar</option>
+    <option>Arihant Nagar</option>
+    <option>Kasba Peth</option>
+    <option>Kasarwadi Road</option>
+    <option>Raut Chwal</option>
+    <option>Uplai Road</option>
+    <option>Pande Chowk</option>
+    <option>Other</option>
+</select>
+<br><br>
+<!-- Mo.No. -->
+<label> Mobile No. :</label>
+<input type="text" name="MNUM" placeholder="Enter 10 digit Mobile No." id="num" onblur="funblur()">
+
+<span id="sp" style="color: red;"> </span>
+
+<span id="sp1" style="color:green;"> </span>
+<br><br>
+<!-- button -->
+
+<input type="reset" style="margin: 25px;background-color:red;">                              
+ <input type="Submit"  style="margin: 25px; background-color: green;" id="sub" value="Submit Form" onclick="display()">
+
+    </form>
+    <script>
+        // heading //
+        title=document.getElementById('heading')
+
+        title.style.color='red'
+        title.style.textAlign='center'
+
+        // Name //
+        
+         function validation()
+         {
+            var user=document.getElementById('user').value;
+            var res=document.getElementById("pas").value;
+           var res1=document.getElementById("cpwd").value
+
+
+             if(user=="")
+             {
+                 document.getElementById('username').innerHTML="Please fill the Name field.."
+                 return false;
+             }
+             if(user.length < 2)
+             {
+                document.getElementById('username').innerHTML="Please fill the Full Name.."
+                 return false;
+             }
+             if(res1!=res)
+         {
+            document.getElementById("cpassword").innerHTML="Password not match"
+            document.getElementById("cpassword").style.color="red"
+            return false;
+         } 
+            }
+          
+            
+         // name //
+         
+        function fblur()
+        {
+            x=document.getElementById("user");
+            x.value=x.value.toUpperCase()
+        }
+        // mail //
+        function myfunction(x)
+        {
+            x.style.background="yellow"
+        }
+    // load page //
+        function funload()
+        {
+            alert("Page is loaded successfully")
+        }
+
+      // Mo.No. //  
+    function funblur()
+    {
+    num= document.getElementById("num").value
+
+    if(num=='')
+    {
+        document.getElementById("sp").innerHTML= "Enter numbers only!!!"
+        return false
+
+    }
+    if(num.length!=10)
+    {
+        document.getElementById("sp").innerHTML= "Enter 10 digits only!!!"
+        return false
+    }
+    if(isNaN(num))  //isNaN- is not a number
+    {
+        document.getElementById("sp").innerHTML= "Enter digits only!!!"
+        return false
+    }
+    
+
+    return true
+}
+
+// password //
+function getvalue()
+{
+    var res=document.getElementById("pas").value;
+
+
+    for(i=0;i<res.length;i++)
+    {
+        if(!(res[i]>='0' && res[i]<='9'
+            || res[i]>='a' && res[i]<='z'||
+            res[i]=='*' || res[i]=='_'))
+        {
+document.getElementById("sp2").innerHTML="Enter alphabets , digits, * , _"
+        }
+
+    }
+
+{   
+var res=document.getElementById("pas").value
+        console.log(res)
+var res1=document.getElementById("pas").value.length
+
+        if (res1<=3)
+        {
+         document.getElementById("sp2").innerHTML="weak"
+         document.getElementById("sp2").style.color="red" 
+        }
+         
+        if (res1<=6&& res1>3)
+        {document.getElementById("sp2").innerHTML="Medium"
+         document.getElementById("sp2").style.color="yellow"
+        }
+         if (res1<=9 && res1>6)
+         {
+             document.getElementById("sp2").innerHTML="Strong"
+         document.getElementById("sp2").style.color="Green"
+         }    
+          
+}
+
+}
+
+
+
+// submit //
+function display()
+        {
+           var name=document.getElementById('user').value;
+           var res=document.getElementById("pas").value;
+           var res1=document.getElementById("cpwd").value
+        
+
+           if(name=="") 
+           {
+            alert("Hello!! Please fill the form..")
+            return false;
+            
+           }
+           if(res1 != res)
+           {
+            alert("Password wrong")
+            return false;
+           }
+
+        
+           else
+           {
+            alert("Thank you!! Your form submitted Sucessfully.")
+           }
+          
+	return true
+}     
+
+    </script>
+</body>
+</html>
